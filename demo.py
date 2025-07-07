@@ -1,13 +1,8 @@
-from us_visa.logger import logging
-from us_visa.exception import USvisaException
-import sys
-# logging.info("Demo script started.")
-# print("Logging has started. Check the logs folder.")
+from us_visa.constants import DATABASE_NAME, MONGODB_URL_KEY
+import os 
 
+url = MONGODB_URL_KEY
+if url is None:
+    raise Exception(f"Environment key: {MONGODB_URL_KEY} is not set.")
 
-try:
-    a = 1 / 0
-except Exception as e:
-    logging.error("An error occurred", exc_info=True)
-    raise USvisaException(e, sys) from e
-
+print(f"MongoDB URL: {url}")
